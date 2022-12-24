@@ -75,7 +75,7 @@ def bookTicket(request):
                 }, status=500)
 
             return Response({
-                'detail': "Successfully payment link generated."
+                'detail': "Successfully payment link generated.",
                 'link': payment_response['payment_request']['longurl'],
             }, status=200)
             # return render(request, 'form.html', {'payment_url': payment_response['payment_request']['longurl'], 'button': "hide-button", 'field': "disable-field"})
