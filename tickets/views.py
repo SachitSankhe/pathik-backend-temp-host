@@ -9,6 +9,7 @@ from .models import Ticket
 from users.decorators import login_required
 from django.conf import settings
 from django.core.serializers.json import DjangoJSONEncoder
+from django.http import HttpRequest
 import json
 
 # Create your views here.
@@ -52,13 +53,16 @@ def bookTicket(request):
                 client = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN,
                                    endpoint='https://test.instamojo.com/api/1.1/')
 
+                redirect_url = str(
+                    "http://" + str(HttpRequest.get_host(request)) + "/api/payment/paymentstatus/")
+
                 payment_response = client.payment_request_create(
                     amount=data['amount'],
                     purpose='Buying a ticket',
                     buyer_name=data['user'].username,
                     email=data['user'].email,
                     send_email=True,
-                    redirect_url='http://localhost:8000/api/payment/paymentstatus/',
+                    redirect_url=redirect_url,
                     allow_repeated_payments=False,
                 )
                 print(payment_response)
@@ -117,13 +121,16 @@ def book_Ticket(request, locationID):
                 client = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN,
                                    endpoint='https://test.instamojo.com/api/1.1/')
 
+                redirect_url = str(
+                    "http://" + str(HttpRequest.get_host(request)) + "/api/payment/paymentstatus/")
+
                 payment_response = client.payment_request_create(
                     amount=data['amount'],
                     purpose='Buying a ticket',
                     buyer_name=data['user'].username,
                     email=data['user'].email,
                     send_email=True,
-                    redirect_url='http://localhost:8000/api/payment/paymentstatus/',
+                    redirect_url=redirect_url,
                     allow_repeated_payments=False,
                 )
                 print(payment_response)
