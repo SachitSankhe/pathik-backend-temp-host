@@ -5,7 +5,7 @@ from .models import Payment
 
 
 class PaymentAdmin(admin.ModelAdmin):
-    readonly_fields = ['ID']
+    readonly_fields = ['id']
 
 
 admin.site.register(Payment, PaymentAdmin)

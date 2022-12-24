@@ -74,7 +74,7 @@ def completePayment(request):
 
             # Creating a payment response for QRcode
             payment_response = {
-                'ID': str(payment.ID),
+                'id': str(payment.id),
                 # 'user_id': user.id,
                 # 'ticket_id': ticket.id,
                 # 'quantity': ticket.quantity,

@@ -33,7 +33,7 @@ SECRET_TOKEN_KEY = env('SECRET_TOKEN_KEY')
 ALGORITHM = env('ALGORITHM')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -93,8 +93,8 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'frgfyenc',
-        'USER': 'frgfyenc',
+        'NAME': 'tnvwshje',
+        'USER': 'tnvwshje',
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': 'satao.db.elephantsql.com',
         'PORT': '5432',
