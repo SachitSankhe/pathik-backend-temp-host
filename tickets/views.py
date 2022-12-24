@@ -54,7 +54,7 @@ def bookTicket(request):
                                    endpoint='https://test.instamojo.com/api/1.1/')
 
                 redirect_url = str(
-                    "http://" + str(HttpRequest.get_host(request)) + "/api/payment/paymentstatus/")
+                    "https://" + str(HttpRequest.get_host(request)) + "/api/payment/paymentstatus/")
 
                 payment_response = client.payment_request_create(
                     amount=data['amount'],
@@ -76,6 +76,7 @@ def bookTicket(request):
 
             return Response({
                 'detail': "Successfully payment link generated."
+                'link': payment_response['payment_request']['longurl'],
             }, status=200)
             # return render(request, 'form.html', {'payment_url': payment_response['payment_request']['longurl'], 'button': "hide-button", 'field': "disable-field"})
 
@@ -122,7 +123,7 @@ def book_Ticket(request, locationID):
                                    endpoint='https://test.instamojo.com/api/1.1/')
 
                 redirect_url = str(
-                    "http://" + str(HttpRequest.get_host(request)) + "/api/payment/paymentstatus/")
+                    "https://" + str(HttpRequest.get_host(request)) + "/api/payment/paymentstatus/")
 
                 payment_response = client.payment_request_create(
                     amount=data['amount'],

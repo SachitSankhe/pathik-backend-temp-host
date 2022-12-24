@@ -272,7 +272,7 @@ def resetpasssord(request):
         print(HttpRequest.get_host(request))
 
         context = {
-            'link': str("http://" + str(HttpRequest.get_host(request)) + "/api/auth/reset/" + str(reset_token) + "/" + str(user.id) + "/"),
+            'link': str("https://" + str(HttpRequest.get_host(request)) + "/api/auth/reset/" + str(reset_token) + "/" + str(user.id) + "/"),
         }
         print(context)
 

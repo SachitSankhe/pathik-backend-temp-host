@@ -13,7 +13,7 @@ def send_passwordreset_email(user_mail, token, userid):
     <html>
         <body>
             <h1 style="color:SlateGray;">Password Reset</h1>
-            <p>Click <a href="http://localhost:8000/api/auth/reset/{token}/{userid}">here</a> to reset the password</p>
+            <p>Click <a href="https://localhost:8000/api/auth/reset/{token}/{userid}">here</a> to reset the password</p>
         </body>
     </html>
     """, subtype='html')
