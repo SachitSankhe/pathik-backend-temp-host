@@ -1,0 +1,15 @@
+
+1.  /api/ticket/
+    check login status and show tickets
+
+2.  remove success.html,  locationForm.html
+    keep   confirmationEmail.html, reset_password.html
+
+3.  from location/views 
+    remove get request
+
+4.  from ticket
+    remove bookTicket.html
+
+5.  check for the status code once around line 189 in users.views.py
+

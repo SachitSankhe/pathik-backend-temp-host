@@ -1,0 +1,24 @@
+2xx ->  Client request reached 
+    200 -> For successfull completion of the process. (successful login, register, logout , reset-password-request)
+
+
+
+
+
+
+4xx -> Error with the client request
+    401(UNAUTHORIZED) -> For reset password while checking and verifiying token and userid,also while logging in
+    406(Not_Acceptable) -> for empty fields , AuthenticationFailed wale response
+    404(Not Found) -> quered object not found
+    409(Conflict) -> Already exist in the db
+    403(Forbidden) -> Expired jwt tokens,not match for token and id in reset password
+
+
+
+
+
+
+
+5xx -> Internal server error
+    500 -> Internal server error
+    503 -> Service unavailable (Email service problem for internet)
