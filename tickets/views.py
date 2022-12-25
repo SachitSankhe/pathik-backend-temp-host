@@ -18,6 +18,7 @@ from instamojo_wrapper import Instamojo
 # remove GET request
 
 
+@login_required
 @api_view(['GET', 'POST'])
 def bookTicket(request):
     if request.method == "POST":
@@ -52,9 +53,12 @@ def bookTicket(request):
                 # Creating Instamojo Client and Order id
                 client = Instamojo(api_key=settings.API_KEY, auth_token=settings.AUTH_TOKEN,
                                    endpoint='https://test.instamojo.com/api/1.1/')
-
+                print(HttpRequest.get_full_path)
                 redirect_url = str(
                     "https://" + str(HttpRequest.get_host(request)) + "/api/payment/paymentstatus/")
+
+                # redirect_url = str(
+                #     HttpRequest.get_full_path + "/api/payment/paymentstatus/")
 
                 payment_response = client.payment_request_create(
                     amount=data['amount'],
@@ -87,6 +91,7 @@ def bookTicket(request):
         pass
 
 
+@login_required
 @api_view(['GET', 'POST'])
 def book_Ticket(request, locationID):
     if request.method == "POST":

@@ -10,7 +10,9 @@ def login_required(view_function):
         jwt_token = request.headers.get('Authorization')
         print(jwt_token)
         if jwt_token is None:
-            return Response(status=401)
+            return Response({
+                'detail': "Authorization token missing"
+            }, status=401)
         try:
             jwt_token = jwt_token.split()[1]
             print(jwt_token)

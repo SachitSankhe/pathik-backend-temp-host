@@ -90,9 +90,9 @@ def register(request):
         return Response({
             'detail': "User already present -> " + str(e)
         }, status=409)
-    except:
+    except Exception as e:
         return Response({
-            'detail' : "Some database error has occured."
+            'detail': "Some database error has occured. " + str(e)
         },status=500)
 
     try:
@@ -349,7 +349,7 @@ def logout(request):
         print(serialized_user)
         # Successfully logged out
         response = Response({
-            'detail': "Successfully logged out"
+            'detail': "Successfully logged out."
         }, status=200)
         response.delete_cookie('jwt_refresh_token')
 
