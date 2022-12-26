@@ -92,27 +92,27 @@ PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'tnvwshje',
-#         'USER': 'tnvwshje',
-#         'PASSWORD': env('DB_PASSWORD'),
-#         'HOST': 'satao.db.elephantsql.com',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Pathik',
-        'USER': 'postgres',
+        'NAME': 'tnvwshje',
+        'USER': 'tnvwshje',
         'PASSWORD': env('DB_PASSWORD'),
-        'HOST': 'localhost',
+        'HOST': 'satao.db.elephantsql.com',
         'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'Pathik',
+#         'USER': 'postgres',
+#         'PASSWORD': env('DB_PASSWORD'),
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 # Credentials for Email Sending process
 EMAIL_USE_TLS = True
