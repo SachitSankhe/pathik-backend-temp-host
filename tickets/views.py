@@ -19,7 +19,7 @@ from instamojo_wrapper import Instamojo
 
 
 @login_required
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def bookTicket(request):
     if request.method == "POST":
         try:
@@ -92,7 +92,7 @@ def bookTicket(request):
 
 
 @login_required
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def book_Ticket(request, locationID):
     if request.method == "POST":
         try:
@@ -171,5 +171,5 @@ def index(request):
     tickets = Ticket.objects.filter(user=request.user).values()[:]
     print(list(tickets))
     return Response({
-        'detail': json.dumps(list(tickets), cls=DjangoJSONEncoder)
+        'tickets': tickets
     }, status=200)
