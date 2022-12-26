@@ -33,7 +33,7 @@ SECRET_TOKEN_KEY = env('SECRET_TOKEN_KEY')
 ALGORITHM = env('ALGORITHM')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
