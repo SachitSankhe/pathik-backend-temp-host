@@ -18,8 +18,8 @@ from instamojo_wrapper import Instamojo
 # remove GET request
 
 
+@api_view(['GET', 'POST'])
 @login_required
-@api_view(['POST'])
 def bookTicket(request):
     if request.method == "POST":
         try:
@@ -88,7 +88,9 @@ def bookTicket(request):
             'detail': ticket.errors
         }, status=400)
     else:
-        pass
+        return Response({
+            'status': False
+        })
 
 
 @login_required

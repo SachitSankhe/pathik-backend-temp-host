@@ -2,17 +2,29 @@ import jwt
 from rest_framework.response import Response
 from datetime import datetime, timedelta
 from users.models import User
+from functools import wraps
+from rest_framework.decorators import renderer_classes
+from rest_framework.renderers import JSONRenderer
 from django.conf import settings
 
 
 def login_required(view_function):
+    @wraps(view_function)
     def wrap(request, *args, **kwargs):
-        jwt_token = request.headers.get('Authorization')
-        print(jwt_token)
-        if jwt_token is None:
+        print(request.headers)
+        try:
+            jwt_token = request.headers.get('Authorization')
+            if jwt_token is None:
+                response = Response({
+                    'detail': "Authorization token missing",
+                }, status=401)
+                return response
+
+        except Exception as e:
+            print("above exception response")
             return Response({
-                'detail': "Authorization token missing"
-            }, status=401)
+                'details': str(e)
+            }, status=500)
         try:
             jwt_token = jwt_token.split()[1]
             print(jwt_token)
