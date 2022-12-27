@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import jwt
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from users.models import User
@@ -23,7 +23,9 @@ from instamojo_wrapper import Instamojo
 def bookTicket(request):
     if request.method == "POST":
         try:
-            user = User.objects.get(username=request.POST.get('user'))
+            # user = User.objects.get(username=request.POST.get('user'))
+            user = request.user
+
             location = Location.objects.get(name=request.POST.get('location'))
             data = ({
                 'user': user.pk,
@@ -32,10 +34,14 @@ def bookTicket(request):
                 'quantity': request.POST.get('quantity'),
                 'amount': request.POST.get('amount'),
             })
+        except jwt.ExpiredSignatureError:
+            return Response({
+                'detail': "Access token expired."
+            }, status=403)
         except Exception as e:
             return Response({
                 'detail': str(e)
-            }, status=400)
+            }, status=500)
 
         ticket = TicketSerializer(data=data)
         if ticket.is_valid():
